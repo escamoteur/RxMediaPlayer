@@ -1,6 +1,13 @@
 ﻿namespace Plugin.RxMediaPlayer.Abstractions
 {
-    public class PlayerState
+    public enum PlayerState
     {
+        Initialized,
+        Stopped,
+        Paused,
+        Playing,
+        Loading,
+        Buffering,
+        Failed
     }
 }

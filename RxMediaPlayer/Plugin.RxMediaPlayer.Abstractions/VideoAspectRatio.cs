@@ -5,4 +5,5 @@
         None,
         AspectFit,
         AspectFill
+    }
 }

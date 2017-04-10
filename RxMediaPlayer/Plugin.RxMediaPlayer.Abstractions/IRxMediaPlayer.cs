@@ -19,10 +19,10 @@ namespace Plugin.RxMediaPlayer.Abstractions
         IObservable<PlayPosition> Positions { get; }
         IObservable<PlayPosition> BufferStates { get; }
 
-        IObservable<bool> InitPlayer();
+        void InitPlayer();
 
-        IObservable<bool> ConnectView(IVideoView view);
-        IObservable<bool> DisconnectView();
+        IDisposable ConnectView(IVideoView view);
+        
 
         void SetMediaUrlSource(string url);
         void SetMediaSource(IMediaSource source);

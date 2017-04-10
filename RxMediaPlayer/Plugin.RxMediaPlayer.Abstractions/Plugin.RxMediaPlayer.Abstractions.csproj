@@ -39,6 +39,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IMediaSource.cs" />
+    <Compile Include="IPlayerViewConnection.cs" />
     <Compile Include="IRxMediaPlayer.cs" />
     <Compile Include="IVideoView.cs" />
     <Compile Include="IVolume.cs" />
