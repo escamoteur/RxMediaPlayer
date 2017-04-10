@@ -5,10 +5,12 @@ using Android.Util;
 using Android.Views;
 using Plugin.RxMediaPlayer.Abstractions;
 
-namespace Plugin.RxMediaPlayer.Views
+namespace Plugin.RxMediaPlayer
 {
     public class RxVideoView : TextureView, IVideoView
     {
+        VideoAspectRatio AspectRatio { get; set; }
+
         public RxVideoView(IntPtr javaReference, JniHandleOwnership transfer) : base(javaReference, transfer)
         {
         }
@@ -28,5 +30,7 @@ namespace Plugin.RxMediaPlayer.Views
         public RxVideoView(Context context, IAttributeSet attrs, int defStyleAttr, int defStyleRes) : base(context, attrs, defStyleAttr, defStyleRes)
         {
         }
+
+
     }
 }

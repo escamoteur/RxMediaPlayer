@@ -28,7 +28,7 @@ namespace Plugin.RxMediaPlayer
 
 
 
-        public void InitPlayer()
+      public void InitPlayer(Object param)
       {
           throw new NotImplementedException();
       }

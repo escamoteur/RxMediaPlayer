@@ -36,7 +36,7 @@ namespace Plugin.RxMediaPlayer.Abstractions
 
         void Seek(TimeSpan position);
 
-        VideoAspectRatio AspectRatio { get; set; }
+
         IVolumeController Volume { get; }
 
     }

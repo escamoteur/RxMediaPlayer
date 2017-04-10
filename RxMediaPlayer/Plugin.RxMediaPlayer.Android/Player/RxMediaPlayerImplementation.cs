@@ -47,17 +47,12 @@ namespace Plugin.RxMediaPlayer
 
 
 
-      public void Init(Android.Content.Context context)
-      {
-          _context = context;
-      }
-
-
-
       public void InitPlayer()
       {
-          // 1. Create a default TrackSelector
-          Handler mainHandler = new Handler();
+          _context = CrossRxMediaPlayer.AppContext;
+
+            // 1. Create a default TrackSelector
+            Handler mainHandler = new Handler();
           _defaultBandwidthMeter = new DefaultBandwidthMeter();
           _adaptiveVideoTrackSelectionFactory = new AdaptiveVideoTrackSelection.Factory(_defaultBandwidthMeter);
           _trackSelector = new DefaultTrackSelector(_adaptiveVideoTrackSelectionFactory);
@@ -74,7 +69,7 @@ namespace Plugin.RxMediaPlayer
 
 
 
-      public IDisposable ConnectView(IVideoView view)
+        public IDisposable ConnectView(IVideoView view)
       {
           if (view is RxVideoView)
           {
@@ -82,10 +77,12 @@ namespace Plugin.RxMediaPlayer
           }
           else
           {
-              (view as FullPlayerView)?.SetPlayer(TheExoPlayer);
+              (view as FullPlayerViewAndroid)?.SetPlayer(TheExoPlayer);
           }
           return new PlayerViewConnection() { Player = TheExoPlayer, View = view };
       }
+
+
 
       public void SetMediaUrlSource(string url)
       {
@@ -95,7 +92,7 @@ namespace Plugin.RxMediaPlayer
             var extractorsFactory = new DefaultExtractorsFactory();
 
             // This is the MediaSource representing the media to be played.
-            var uri = Android.Net.Uri.Parse("https://d2fx94pz3d1i3p.cloudfront.net/NUEbfYA4Rk47xX6B.mp4");
+            var uri = Android.Net.Uri.Parse(url);
             _videoSource = new ExtractorMediaSource(uri, dataSourceFactory, extractorsFactory, null, null);
             TheExoPlayer.Prepare(_videoSource);
         }
@@ -112,7 +109,7 @@ namespace Plugin.RxMediaPlayer
 
       public void Play()
       {
-          throw new NotImplementedException();
+          TheExoPlayer.PlayWhenReady = true;
       }
 
       public void Pause()
@@ -138,14 +135,6 @@ namespace Plugin.RxMediaPlayer
 
 
 // Event Listener
-
-
-        public void Dispose()
-        {
-            throw new NotImplementedException();
-        }
-
-
 
         public void OnLoadingChanged(bool p0)
         {

@@ -1,6 +1,10 @@
 ﻿using Plugin.RxMediaPlayer.Abstractions;
 using System;
 
+#if __ANDROID__
+using Android.Content;
+#endif
+
 namespace Plugin.RxMediaPlayer
 {
   /// <summary>
@@ -35,7 +39,19 @@ namespace Plugin.RxMediaPlayer
 #endif
     }
 
-    internal static Exception NotImplementedInReferenceAssembly()
+
+#if __ANDROID__
+      public static void Init(Context context)
+      {
+          AppContext = context;
+      }
+
+      public static Context   AppContext { get; set; }
+
+#endif
+
+
+        internal static Exception NotImplementedInReferenceAssembly()
     {
       return new NotImplementedException("This functionality is not implemented in the portable version of this assembly.  You should reference the NuGet package from your main application project in order to reference the platform-specific implementation.");
     }

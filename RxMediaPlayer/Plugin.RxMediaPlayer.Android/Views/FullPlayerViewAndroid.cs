@@ -18,28 +18,28 @@ using Plugin.RxMediaPlayer.Abstractions;
 namespace Plugin.RxMediaPlayer
 {
   
-    public class FullPlayerView : FrameLayout, IVideoView
+    public class FullPlayerViewAndroid : FrameLayout, IVideoView
     {
-        public FullPlayerView(IntPtr javaReference, JniHandleOwnership transfer) : base(javaReference, transfer)
+        public FullPlayerViewAndroid(IntPtr javaReference, JniHandleOwnership transfer) : base(javaReference, transfer)
         {
         }
 
-        public FullPlayerView(Context context) : base(context)
-        {
-            Init(context);
-        }
-
-        public FullPlayerView(Context context, IAttributeSet attrs) : base(context, attrs)
+        public FullPlayerViewAndroid(Context context) : base(context)
         {
             Init(context);
         }
 
-        public FullPlayerView(Context context, IAttributeSet attrs, int defStyleAttr) : base(context, attrs, defStyleAttr)
+        public FullPlayerViewAndroid(Context context, IAttributeSet attrs) : base(context, attrs)
         {
             Init(context);
         }
 
-        public FullPlayerView(Context context, IAttributeSet attrs, int defStyleAttr, int defStyleRes) : base(context, attrs, defStyleAttr, defStyleRes)
+        public FullPlayerViewAndroid(Context context, IAttributeSet attrs, int defStyleAttr) : base(context, attrs, defStyleAttr)
+        {
+            Init(context);
+        }
+
+        public FullPlayerViewAndroid(Context context, IAttributeSet attrs, int defStyleAttr, int defStyleRes) : base(context, attrs, defStyleAttr, defStyleRes)
         {
             Init(context);
         }
@@ -48,8 +48,6 @@ namespace Plugin.RxMediaPlayer
         private void Init(Context context)
         {
             PlayerView = new SimpleExoPlayerView(context);
-            this.SetBackgroundColor(Color.Green);
-            PlayerView.SetBackgroundColor(Color.Aqua);
             this.AddView(PlayerView);
         }
 

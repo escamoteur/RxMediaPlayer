@@ -26,22 +26,23 @@ namespace App1
             // and attach an event to it
             Button button = FindViewById<Button>(Resource.Id.MyButton);
 
-            button.Click += delegate { button.Text = string.Format("{0} clicks!", count++); };
-
-
-
-
             RxMediaPlayerImplementation Player = new RxMediaPlayerImplementation();
-            Player.Init(this);
 
-            Player.InitPlayer();
+            button.Click += delegate { Player.Play(); };
 
 
-            FullPlayerView videoView  = FindViewById<FullPlayerView>(Resource.Id.MyVideo);
 
-            Player.ConnectView(videoView);
 
-            Player.SetMediaUrlSource("https://d2fx94pz3d1i3p.cloudfront.net/NUEbfYA4Rk47xX6B.mp4");
+            CrossRxMediaPlayer.Init(this);
+
+            CrossRxMediaPlayer.Current.InitPlayer();
+
+
+            RxVideoView videoView  = FindViewById<RxVideoView>(Resource.Id.MyVideo);
+
+            CrossRxMediaPlayer.Current.ConnectView(videoView);
+
+            CrossRxMediaPlayer.Current.SetMediaUrlSource("https://d2fx94pz3d1i3p.cloudfront.net/NUEbfYA4Rk47xX6B.mp4");
 
  
 

@@ -67,7 +67,7 @@
     <Compile Include="Player\RxMediaPlayerImplementation.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\FullPlayerView.cs" />
+    <Compile Include="Views\FullPlayerViewAndroid.cs" />
     <Compile Include="Views\PlayerViewConnection.cs" />
     <Compile Include="Views\VideoView.cs" />
   </ItemGroup>
