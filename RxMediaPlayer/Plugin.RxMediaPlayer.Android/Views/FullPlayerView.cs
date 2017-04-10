@@ -15,7 +15,7 @@ using Com.Google.Android.Exoplayer2;
 using Com.Google.Android.Exoplayer2.UI;
 using Plugin.RxMediaPlayer.Abstractions;
 
-namespace Plugin.RxMediaPlayer.Views
+namespace Plugin.RxMediaPlayer
 {
   
     public class FullPlayerView : FrameLayout, IVideoView
@@ -48,8 +48,7 @@ namespace Plugin.RxMediaPlayer.Views
         private void Init(Context context)
         {
             PlayerView = new SimpleExoPlayerView(context);
-            PlayerView.SetMinimumHeight(200);
-            PlayerView.SetMinimumWidth(200);
+            this.SetBackgroundColor(Color.Green);
             PlayerView.SetBackgroundColor(Color.Aqua);
             this.AddView(PlayerView);
         }

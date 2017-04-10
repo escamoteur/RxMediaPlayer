@@ -6,9 +6,11 @@ using Android.Content;
 using Android.OS;
 using Android.Util;
 using Com.Google.Android.Exoplayer2;
+using Com.Google.Android.Exoplayer2.Extractor;
 using Com.Google.Android.Exoplayer2.Source;
 using Com.Google.Android.Exoplayer2.Trackselection;
 using Com.Google.Android.Exoplayer2.Upstream;
+using Com.Google.Android.Exoplayer2.Util;
 using Plugin.RxMediaPlayer.Views;
 using IMediaSource = Plugin.RxMediaPlayer.Abstractions.IMediaSource;
 using Object = Java.Lang.Object;
@@ -19,7 +21,7 @@ namespace Plugin.RxMediaPlayer
   /// <summary>
   /// Implementation for Feature
   /// </summary>
-  public class RxMediaPlayerImplementation : IRxMediaPlayer, IExoPlayerEventListener
+  public class RxMediaPlayerImplementation : Java.Lang.Object,  IRxMediaPlayer, IExoPlayerEventListener
     {
       private SimpleExoPlayer TheExoPlayer;
       private Context _context;
@@ -27,7 +29,8 @@ namespace Plugin.RxMediaPlayer
       private DefaultBandwidthMeter _defaultBandwidthMeter;
       private AdaptiveVideoTrackSelection.Factory _adaptiveVideoTrackSelectionFactory;
       private TrackSelector _trackSelector;
-      public PlayerState State { get; }
+        private Com.Google.Android.Exoplayer2.Source.IMediaSource _videoSource;
+        public PlayerState State { get; }
       public TimeSpan Position { get; }
       public TimeSpan Duration { get; }
       public TimeSpan Buffered { get; }
@@ -79,15 +82,23 @@ namespace Plugin.RxMediaPlayer
           }
           else
           {
-  //            (view as FullPlayerView)?.SetPlayer(TheExoPlayer);
+              (view as FullPlayerView)?.SetPlayer(TheExoPlayer);
           }
           return new PlayerViewConnection() { Player = TheExoPlayer, View = view };
       }
 
       public void SetMediaUrlSource(string url)
       {
-          throw new NotImplementedException();
-      }
+            // Produces DataSource instances through which media data is loaded.
+            var dataSourceFactory = new DefaultDataSourceFactory(_context, Util.GetUserAgent(_context, "ExoPlayerTest"), _defaultBandwidthMeter);
+            // Produces Extractor instances for parsing the media data.
+            var extractorsFactory = new DefaultExtractorsFactory();
+
+            // This is the MediaSource representing the media to be played.
+            var uri = Android.Net.Uri.Parse("https://d2fx94pz3d1i3p.cloudfront.net/NUEbfYA4Rk47xX6B.mp4");
+            _videoSource = new ExtractorMediaSource(uri, dataSourceFactory, extractorsFactory, null, null);
+            TheExoPlayer.Prepare(_videoSource);
+        }
 
       public void SetMediaSource(IMediaSource source)
       {
@@ -134,7 +145,7 @@ namespace Plugin.RxMediaPlayer
             throw new NotImplementedException();
         }
 
-        public IntPtr Handle { get; }
+
 
         public void OnLoadingChanged(bool p0)
         {

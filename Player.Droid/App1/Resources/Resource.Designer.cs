@@ -127,14 +127,11 @@ namespace App1
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f070018
-			public const int MyButton = 2131165208;
+			// aapt resource value: 0x7f070017
+			public const int MyButton = 2131165207;
 			
 			// aapt resource value: 0x7f070016
-			public const int MyTest = 2131165206;
-			
-			// aapt resource value: 0x7f070017
-			public const int MyVideo = 2131165207;
+			public const int MyVideo = 2131165206;
 			
 			// aapt resource value: 0x7f070000
 			public const int exo_artwork = 2131165184;
