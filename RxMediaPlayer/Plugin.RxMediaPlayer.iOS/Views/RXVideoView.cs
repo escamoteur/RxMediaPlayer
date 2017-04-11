@@ -4,9 +4,9 @@ using Foundation;
 using Plugin.RxMediaPlayer.Abstractions;
 using UIKit;
 
-namespace Plugin.RxMediaPlayer.Views
+namespace Plugin.RxMediaPlayer.Views.iOS
 {
-    public class RXVideoView : UIView, IVideoView
+    public class RxVideoView : UIView, IVideoView
     {
 
 

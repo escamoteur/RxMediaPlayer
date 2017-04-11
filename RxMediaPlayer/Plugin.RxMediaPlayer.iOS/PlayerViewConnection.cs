@@ -1,6 +1,7 @@
 ﻿
 using AVFoundation;
 using Plugin.RxMediaPlayer.Abstractions;
+using Plugin.RxMediaPlayer.Views.iOS;
 
 namespace Plugin.RxMediaPlayer.Views
 {
@@ -9,7 +10,7 @@ namespace Plugin.RxMediaPlayer.Views
         public void Dispose()
         {
             Player.Pause();
-            (View as RXVideoView)?.Disconnect();
+            (View as RxVideoView)?.Disconnect();
         }
 
         public AVPlayer Player { get; set; }

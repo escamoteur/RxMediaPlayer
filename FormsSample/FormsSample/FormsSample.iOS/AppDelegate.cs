@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
+using Plugin.RxMediaPlayer;
 using UIKit;
 
 namespace FormsSample.iOS
@@ -25,6 +26,7 @@ namespace FormsSample.iOS
 			global::Xamarin.Forms.Forms.Init ();
 			LoadApplication (new FormsSample.App ());
 
+            CrossRxMediaPlayer.Current.InitPlayer();
 			return base.FinishedLaunching (app, options);
 		}
 	}

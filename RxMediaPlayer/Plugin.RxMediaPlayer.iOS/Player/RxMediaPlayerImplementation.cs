@@ -5,6 +5,7 @@ using System.Threading;
 using AVFoundation;
 using Foundation;
 using Plugin.RxMediaPlayer.Views;
+using Plugin.RxMediaPlayer.Views.iOS;
 
 
 namespace Plugin.RxMediaPlayer
@@ -41,7 +42,7 @@ namespace Plugin.RxMediaPlayer
 
       public IDisposable ConnectView(IVideoView view)
       {
-          var videoView = view as RXVideoView;
+          var videoView = view as RxVideoView;
           videoView.SetPlayer(ThePlayer);
           return new PlayerViewConnection(){Player = ThePlayer,View = view};
       }

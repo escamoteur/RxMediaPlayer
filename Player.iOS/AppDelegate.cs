@@ -3,6 +3,7 @@ using AVKit;
 using Foundation;
 using Plugin.RxMediaPlayer;
 using Plugin.RxMediaPlayer.Views;
+using Plugin.RxMediaPlayer.Views.iOS;
 using UIKit;
 
 namespace Player.iOS
@@ -33,7 +34,7 @@ namespace Player.iOS
 
             Window.RootViewController = controller;
 
-            var videoView = new RXVideoView();
+            var videoView = new RxVideoView();
             videoView.Frame = controller.View.Frame;
             controller.View.AddSubview(videoView);
 

@@ -50,8 +50,12 @@ namespace FormsSample
 
         private void PlayPause_OnClicked(object sender, EventArgs e)
         {
+            CrossRxMediaPlayer.Current.Play();
+            return;
+
             switch (CrossRxMediaPlayer.Current.State)
             {
+                    
                 case PlayerState.Idle:
                     CrossRxMediaPlayer.Current.Play();
                     break;
