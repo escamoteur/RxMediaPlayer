@@ -5,7 +5,7 @@ using Android.Util;
 using Android.Views;
 using Plugin.RxMediaPlayer.Abstractions;
 
-namespace Plugin.RxMediaPlayer
+namespace Plugin.RxMediaPlayer.Droid
 {
     public class RxVideoView : TextureView, IVideoView
     {

@@ -15,7 +15,7 @@ namespace FormsSample
 		{
 			InitializeComponent();
 
-			MainPage = new FormsSample.MainPage();
+			MainPage = new CustomPlayer();
 		}
 
 		protected override void OnStart ()

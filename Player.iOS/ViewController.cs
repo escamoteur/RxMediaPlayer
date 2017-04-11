@@ -8,6 +8,7 @@ namespace Player.iOS
     {
         public ViewController(IntPtr handle) : base(handle)
         {
+            
         }
 
         public override void ViewDidLoad()

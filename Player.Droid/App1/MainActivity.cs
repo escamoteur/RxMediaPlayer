@@ -6,6 +6,7 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using Plugin.RxMediaPlayer;
+using Plugin.RxMediaPlayer.Droid;
 
 
 namespace App1

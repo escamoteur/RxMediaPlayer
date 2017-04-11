@@ -92,11 +92,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="VideoView.cs" />
     <Compile Include="ViewController.designer.cs">
       <DependentUpon>ViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewController.cs" />
-    <InterfaceDefinition Include="Main.storyboard" />
     <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
   </ItemGroup>
   <ItemGroup>
@@ -113,6 +113,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Entitlements.plist" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RxMediaPlayer\Plugin.RxMediaPlayer.Abstractions\Plugin.RxMediaPlayer.Abstractions.csproj">
+      <Project>{6EDB0588-FFC5-4EF5-8A99-9E241D0F878D}</Project>
+      <Name>Plugin.RxMediaPlayer.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RxMediaPlayer\Plugin.RxMediaPlayer.iOS\Plugin.RxMediaPlayer.iOS.csproj">
+      <Project>{2882AEEB-D4CD-4EB9-8A6C-6653B33681F0}</Project>
+      <Name>Plugin.RxMediaPlayer.iOS</Name>
+      <IsAppExtension>false</IsAppExtension>
+      <IsWatchApp>false</IsWatchApp>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

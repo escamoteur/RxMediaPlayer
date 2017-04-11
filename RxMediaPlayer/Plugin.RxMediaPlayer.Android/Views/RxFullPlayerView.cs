@@ -15,31 +15,31 @@ using Com.Google.Android.Exoplayer2;
 using Com.Google.Android.Exoplayer2.UI;
 using Plugin.RxMediaPlayer.Abstractions;
 
-namespace Plugin.RxMediaPlayer
+namespace Plugin.RxMediaPlayer.Droid
 {
   
-    public class FullPlayerViewAndroid : FrameLayout, IVideoView
+    public class RxFullPlayerView : FrameLayout, IVideoView
     {
-        public FullPlayerViewAndroid(IntPtr javaReference, JniHandleOwnership transfer) : base(javaReference, transfer)
+        public RxFullPlayerView(IntPtr javaReference, JniHandleOwnership transfer) : base(javaReference, transfer)
         {
         }
 
-        public FullPlayerViewAndroid(Context context) : base(context)
-        {
-            Init(context);
-        }
-
-        public FullPlayerViewAndroid(Context context, IAttributeSet attrs) : base(context, attrs)
+        public RxFullPlayerView(Context context) : base(context)
         {
             Init(context);
         }
 
-        public FullPlayerViewAndroid(Context context, IAttributeSet attrs, int defStyleAttr) : base(context, attrs, defStyleAttr)
+        public RxFullPlayerView(Context context, IAttributeSet attrs) : base(context, attrs)
         {
             Init(context);
         }
 
-        public FullPlayerViewAndroid(Context context, IAttributeSet attrs, int defStyleAttr, int defStyleRes) : base(context, attrs, defStyleAttr, defStyleRes)
+        public RxFullPlayerView(Context context, IAttributeSet attrs, int defStyleAttr) : base(context, attrs, defStyleAttr)
+        {
+            Init(context);
+        }
+
+        public RxFullPlayerView(Context context, IAttributeSet attrs, int defStyleAttr, int defStyleRes) : base(context, attrs, defStyleAttr, defStyleRes)
         {
             Init(context);
         }

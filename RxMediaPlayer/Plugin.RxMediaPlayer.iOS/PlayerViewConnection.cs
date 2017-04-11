@@ -1,4 +1,5 @@
-﻿using Com.Google.Android.Exoplayer2;
+﻿
+using AVFoundation;
 using Plugin.RxMediaPlayer.Abstractions;
 
 namespace Plugin.RxMediaPlayer.Views
@@ -7,10 +8,11 @@ namespace Plugin.RxMediaPlayer.Views
     {
         public void Dispose()
         {
-            Player.Stop();
+            Player.Pause();
+            (View as RXVideoView)?.Disconnect();
         }
 
-        public SimpleExoPlayer Player { get; set; }
+        public AVPlayer Player { get; set; }
         public IVideoView View { get; set; }
     }
 }

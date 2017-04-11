@@ -2,6 +2,9 @@ using Plugin.RxMediaPlayer.Abstractions;
 using System;
 using System.Reactive.Subjects;
 using System.Threading;
+using AVFoundation;
+using Foundation;
+using Plugin.RxMediaPlayer.Views;
 
 
 namespace Plugin.RxMediaPlayer
@@ -27,20 +30,25 @@ namespace Plugin.RxMediaPlayer
       private Subject<PlayPosition> BufferStatesSubject { get; } = new Subject<PlayPosition>();
 
 
+      private AVPlayer ThePlayer;
 
-      public void InitPlayer(Object param)
+
+      public void InitPlayer()
       {
-          throw new NotImplementedException();
+          ThePlayer?.Dispose();
+          ThePlayer = new AVPlayer();
       }
 
       public IDisposable ConnectView(IVideoView view)
       {
-          throw new NotImplementedException();
+          var videoView = view as RXVideoView;
+          videoView.SetPlayer(ThePlayer);
+          return new PlayerViewConnection(){Player = ThePlayer,View = view};
       }
 
       public void SetMediaUrlSource(string url)
       {
-          throw new NotImplementedException();
+          ThePlayer.ReplaceCurrentItemWithPlayerItem(new AVPlayerItem(NSUrl.FromString(url)));
       }
 
       public void SetMediaSource(IMediaSource source)
@@ -55,17 +63,17 @@ namespace Plugin.RxMediaPlayer
 
       public void Play()
       {
-          throw new NotImplementedException();
+          ThePlayer.Play();
       }
 
       public void Pause()
       {
-          throw new NotImplementedException();
+         ThePlayer.Pause();
       }
 
       public void Stop()
       {
-          throw new NotImplementedException();
+          ThePlayer.Pause();
       }
 
       public void Seek(TimeSpan position)

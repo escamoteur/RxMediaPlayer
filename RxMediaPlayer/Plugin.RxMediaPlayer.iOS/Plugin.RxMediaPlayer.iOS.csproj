@@ -38,11 +38,12 @@
     <Compile Include="..\Plugin.RxMediaPlayer\CrossRxMediaPlayer.cs">
       <Link>CrossRxMediaPlayer.cs</Link>
     </Compile>
+    <Compile Include="PlayerViewConnection.cs" />
     <Compile Include="Player\RxMediaPlayerImplementation.cs" />
     <Compile Include="Player\VolumeController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\FullPlayerView.cs" />
-    <Compile Include="Views\VideoView.cs" />
+    <Compile Include="Views\RXVideoView.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Plugin.RxMediaPlayer.Abstractions\Plugin.RxMediaPlayer.Abstractions.csproj">

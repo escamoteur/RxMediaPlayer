@@ -2,8 +2,8 @@
 {
     public enum PlayerState
     {
-        Initialized,
-        Stopped,
+        Idle,
+        Ended,
         Paused,
         Playing,
         Loading,

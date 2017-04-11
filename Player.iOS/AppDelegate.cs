@@ -1,4 +1,8 @@
-﻿using Foundation;
+﻿using AVFoundation;
+using AVKit;
+using Foundation;
+using Plugin.RxMediaPlayer;
+using Plugin.RxMediaPlayer.Views;
 using UIKit;
 
 namespace Player.iOS
@@ -21,6 +25,28 @@ namespace Player.iOS
         {
             // Override point for customization after application launch.
             // If not required for your application you can safely delete this method
+
+            // create a new window instance based on the screen size
+            Window = new UIWindow(UIScreen.MainScreen.Bounds);
+
+            var controller = new UIViewController();
+
+            Window.RootViewController = controller;
+
+            var videoView = new RXVideoView();
+            videoView.Frame = controller.View.Frame;
+            controller.View.AddSubview(videoView);
+
+
+            CrossRxMediaPlayer.Current.InitPlayer();
+            CrossRxMediaPlayer.Current.ConnectView(videoView);
+
+
+            CrossRxMediaPlayer.Current.SetMediaUrlSource("https://d2fx94pz3d1i3p.cloudfront.net/NUEbfYA4Rk47xX6B.mp4");
+            CrossRxMediaPlayer.Current.Play();
+
+            // make the window visible
+            Window.MakeKeyAndVisible();
 
             return true;
         }

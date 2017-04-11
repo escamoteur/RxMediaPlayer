@@ -1,28 +1,29 @@
-﻿
-
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using Plugin.RxMediaPlayer.Droid;
 using Plugin.RxMediaPlayer.Forms;
 using Plugin.RxMediaPlayer.Forms.Droid;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
-[assembly: ExportRenderer(typeof(FullVideoView), typeof(FullVideoViewRenderer))]
+
+[assembly: ExportRenderer(typeof(CustomVideoView), typeof(CustomVideoViewRenderer))]
 namespace Plugin.RxMediaPlayer.Forms.Droid
 {
-    public class FullVideoViewRenderer : ViewRenderer<FullVideoView,RxFullPlayerView>
+
+
+    public class CustomVideoViewRenderer : ViewRenderer<CustomVideoView, RxVideoView>
     {
-        protected override void OnElementChanged(ElementChangedEventArgs<FullVideoView> e)
+        protected override void OnElementChanged(ElementChangedEventArgs<CustomVideoView> e)
         {
             base.OnElementChanged(e);
 
-            RxFullPlayerView nativePlayerView = null;
+            RxVideoView nativePlayerView = null;
 
             if (Control == null)
             {
                 // Instantiate the native control and assign it to the Control property with
                 // the SetNativeControl method
-                nativePlayerView = new RxFullPlayerView(Context);
+                nativePlayerView = new RxVideoView(Context);
 
                 SetNativeControl(nativePlayerView);
                 e.NewElement.VideoView = nativePlayerView;

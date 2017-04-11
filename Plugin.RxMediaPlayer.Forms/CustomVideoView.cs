@@ -3,9 +3,9 @@ using Xamarin.Forms;
 
 namespace Plugin.RxMediaPlayer.Forms
 {
-    public class FullVideoView  : View
+    public class CustomVideoView  : View
     {
         public IVideoView VideoView { get; set; }
         
     }
-}   
+}

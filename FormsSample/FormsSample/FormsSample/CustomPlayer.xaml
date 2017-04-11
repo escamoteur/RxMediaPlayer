@@ -1,0 +1,23 @@
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:FormsSample"
+             xmlns:forms="clr-namespace:Plugin.RxMediaPlayer.Forms;assembly=Plugin.RxMediaPlayer.Forms"
+             x:Class="FormsSample.CustomPlayer">
+
+    <StackLayout>
+        <Button Text="Connect"  Clicked="OnConnect1"/>
+
+        <forms:CustomVideoView x:Name="MyVideoView" HeightRequest="200"/>
+    
+        <StackLayout Orientation="Horizontal">
+            <Button  Text ="|&lt;"/> 
+            <Button x:Name="PlayPause" Text ="Play" Clicked="PlayPause_OnClicked"/> 
+            <Button Text ="&gt;|"/> 
+        </StackLayout>
+
+        <Button Text="Connect"  Clicked="OnConnect2"/>
+        <forms:CustomVideoView x:Name="MyVideoView2" HeightRequest="200"/>
+    </StackLayout>
+    
+
+</ContentPage>
