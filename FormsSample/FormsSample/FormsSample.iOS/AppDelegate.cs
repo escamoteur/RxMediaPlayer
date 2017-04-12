@@ -4,6 +4,7 @@ using System.Linq;
 
 using Foundation;
 using Plugin.RxMediaPlayer;
+using Plugin.RxMediaPlayer.Forms.iOS;
 using UIKit;
 
 namespace FormsSample.iOS
@@ -27,6 +28,7 @@ namespace FormsSample.iOS
 			LoadApplication (new FormsSample.App ());
 
             CrossRxMediaPlayer.Current.InitPlayer();
+		    CustomVideoViewRenderer.InitRenderer();
 			return base.FinishedLaunching (app, options);
 		}
 	}

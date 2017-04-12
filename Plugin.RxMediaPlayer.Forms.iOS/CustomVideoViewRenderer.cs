@@ -12,8 +12,16 @@ namespace Plugin.RxMediaPlayer.Forms.iOS
 {
 
 
+
     public class CustomVideoViewRenderer : ViewRenderer<CustomVideoView, RxVideoView>
     {
+
+        public static void InitRenderer()
+        {
+
+        }
+
+
         protected override void OnElementChanged(ElementChangedEventArgs<CustomVideoView> e)
         {
             base.OnElementChanged(e);

@@ -8,10 +8,7 @@ namespace Plugin.RxMediaPlayer.Abstractions
     /// </summary>
     public interface IRxMediaPlayer
     {
-        PlayerState  State { get; }
-        TimeSpan Position { get; }
         TimeSpan Duration { get; }
-        TimeSpan Buffered { get; }
 
         IObservable<PlayerError> Errors { get; }
         IObservable<PlayerState> PlayerStates { get; }

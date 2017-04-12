@@ -6,7 +6,7 @@
         Ended,
         Paused,
         Playing,
-        Loading,
+//        Loading,
         Buffering,
         Failed
     }

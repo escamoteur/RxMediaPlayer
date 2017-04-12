@@ -1,4 +1,5 @@
 using System;
+using System.Reactive.Linq;
 using Plugin.RxMediaPlayer;
 using Plugin.RxMediaPlayer.Abstractions;
 using Xamarin.Forms;
@@ -27,14 +28,13 @@ namespace FormsSample
                         PlayPause.Text = "Play";
                         break;
                     case PlayerState.Ended:
+                        PlayPause.Text = "Play";
                         break;
                     case PlayerState.Paused:
                         PlayPause.Text = "Play";
                         break;
                     case PlayerState.Playing:
                         PlayPause.Text = "Pause";
-                        break;
-                    case PlayerState.Loading:
                         break;
                     case PlayerState.Buffering:
                         break;
@@ -50,24 +50,23 @@ namespace FormsSample
 
         private void PlayPause_OnClicked(object sender, EventArgs e)
         {
-            CrossRxMediaPlayer.Current.Play();
-            return;
+            var state = CrossRxMediaPlayer.Current.PlayerStates.Take(1).Wait();
 
-            switch (CrossRxMediaPlayer.Current.State)
+            switch (state)
             {
-                    
+
                 case PlayerState.Idle:
                     CrossRxMediaPlayer.Current.Play();
                     break;
                 case PlayerState.Ended:
+                    CrossRxMediaPlayer.Current.Seek(TimeSpan.FromSeconds(0));
+                    CrossRxMediaPlayer.Current.Play();
                     break;
                 case PlayerState.Paused:
                     CrossRxMediaPlayer.Current.Play();
                     break;
                 case PlayerState.Playing:
                     CrossRxMediaPlayer.Current.Pause();
-                    break;
-                case PlayerState.Loading:
                     break;
                 case PlayerState.Buffering:
                     break;

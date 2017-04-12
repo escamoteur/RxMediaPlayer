@@ -13,6 +13,7 @@ namespace Plugin.RxMediaPlayer.Forms.Droid
 
     public class CustomVideoViewRenderer : ViewRenderer<CustomVideoView, RxVideoView>
     {
+
         protected override void OnElementChanged(ElementChangedEventArgs<CustomVideoView> e)
         {
             base.OnElementChanged(e);

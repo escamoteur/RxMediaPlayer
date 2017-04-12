@@ -43,7 +43,7 @@ namespace Plugin.RxMediaPlayer
         public IObservable<PlayPosition> BufferStates => BufferStatesSubject;
 
         private Subject<PlayerError> ErrorsSubject { get; } = new Subject<PlayerError>();
-        private Subject<PlayerState> PlayerStatesSubject { get; } = new Subject<PlayerState>();
+        private BehaviorSubject<PlayerState> PlayerStatesSubject { get;  set; }
         private Subject<PlayPosition> PositionsSubject { get; } = new Subject<PlayPosition>();
         private Subject<PlayPosition> BufferStatesSubject { get; } = new Subject<PlayPosition>();
 
@@ -51,6 +51,7 @@ namespace Plugin.RxMediaPlayer
         public void InitPlayer()
         {
             _context = CrossRxMediaPlayer.AppContext;
+
 
             // 1. Create a default TrackSelector
             Handler mainHandler = new Handler();
@@ -65,6 +66,9 @@ namespace Plugin.RxMediaPlayer
             TheExoPlayer = ExoPlayerFactory.NewSimpleInstance(_context, _trackSelector, _defaultLoadControl);
 
             TheExoPlayer.AddListener(this);
+
+            PlayerStatesSubject = new BehaviorSubject<PlayerState>(PlayerState.Idle);
+
         }
 
 
@@ -109,8 +113,8 @@ namespace Plugin.RxMediaPlayer
         {
             if (State == PlayerState.Idle)
             {
-//                TheExoPlayer.Prepare(_videoSource,false,false);
-                TheExoPlayer.Prepare(_videoSource);
+                TheExoPlayer.Prepare(_videoSource,false,false);
+//                TheExoPlayer.Prepare(_videoSource);
             }
             TheExoPlayer.PlayWhenReady = true;
         }
@@ -127,7 +131,12 @@ namespace Plugin.RxMediaPlayer
 
         public void Seek(TimeSpan position)
         {
-            throw new NotImplementedException();
+            var duration =  TheExoPlayer.Duration;
+            
+            if ((duration != -9223372036854775807) && (position.TotalMilliseconds <= duration))
+            {
+                TheExoPlayer.SeekTo((long) position.TotalMilliseconds);
+            }
         }
 
         public VideoAspectRatio AspectRatio { get; set; }
